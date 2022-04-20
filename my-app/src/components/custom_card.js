@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // image
-import paw from '../img/paw.png';
+import Paw from '../img/paw.png';
 
 export default function CustomCard({ dogImg, name, sex, age}) {
     return (
@@ -14,7 +14,7 @@ export default function CustomCard({ dogImg, name, sex, age}) {
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Row>
-                        <Col md="auto"><img src={paw} alt="paw" width={50} height={50} /></Col>
+                        <Col md="auto"><img src={Paw} alt="paw" width={50} height={50} /></Col>
                         <Col>
                             <Card.Text>
                                 SEX: {sex}<br />
