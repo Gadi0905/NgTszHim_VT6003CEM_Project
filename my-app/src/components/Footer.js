@@ -7,17 +7,19 @@ import { AiFillFacebook, AiFillInstagram, AiFillTwitterSquare } from 'react-icon
 
 export default function Footer() {
     return (
-        <Navbar bg="dark" variant="dark">
-            <Container>
-                <Navbar.Toggle />
-                <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                    follow us:  <a href="https://www.facebook.com/"><AiFillFacebook size={30}/></a>
-                                <a href="https://www.instagram.com/"><AiFillInstagram size={30}/></a>
-                                <a href="https://twitter.com"><AiFillTwitterSquare size={30}/></a>
-                    </Navbar.Text>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <div>
+            <Navbar bg="dark" variant="dark" fixed="bottom">
+                <Container>
+                    <Navbar.Toggle />
+                    <Navbar.Collapse className="justify-content-end">
+                        <Navbar.Text>
+                            follow us:  <a href="https://www.facebook.com/"><AiFillFacebook size={30} /></a>
+                            <a href="https://www.instagram.com/"><AiFillInstagram size={30} /></a>
+                            <a href="https://twitter.com"><AiFillTwitterSquare size={30} /></a>
+                        </Navbar.Text>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        </div>
     )
 }
