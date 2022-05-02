@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 // image
 import Paw from '../img/paw.png';
 
-export default function CustomCard({ dogImg, name, sex, age}) {
+export default function CustomCard({ dogImg, name, sex, age }) {
     return (
         <Col>
             <Card border="dark">

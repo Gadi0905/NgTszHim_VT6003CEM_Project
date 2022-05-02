@@ -1,47 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // custom components
 import CustomCard from '../components/custom_card.js';
 // bootstrap components
-import Container from 'react-bootstrap/Container';
-import CardGroup from 'react-bootstrap/CardGroup';
 import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+// import Container from 'react-bootstrap/Container';
+// import CardGroup from 'react-bootstrap/CardGroup';
+// import Card from 'react-bootstrap/Card';
 // image
 import Dog01 from '../img/dog01.jpg';
-import Dog02 from '../img/dog02.jpg';
-import Dog03 from '../img/dog03.jpg';
-import Dog04 from '../img/dog04.jpg';
-import Dog05 from '../img/dog05.jpg';
-import Dog06 from '../img/dog06.jpg';
-import Dog07 from '../img/dog07.jpg';
-import Dog08 from '../img/dog08.jpg';
-import Dog09 from '../img/dog09.jpg';
+// import Dog02 from '../img/dog02.jpg';
+// import Dog03 from '../img/dog03.jpg';
+// import Dog04 from '../img/dog04.jpg';
+// import Dog05 from '../img/dog05.jpg';
+// import Dog06 from '../img/dog06.jpg';
+// import Dog07 from '../img/dog07.jpg';
+// import Dog08 from '../img/dog08.jpg';
+// import Dog09 from '../img/dog09.jpg';
+// import Paw from '../img/paw.png';
+
+import axios from 'axios';
 
 export default function Home() {
+
+    const [dogDataList, setDogDataList] = useState({})
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/dog')
+            .then(res => {
+                setDogDataList(res.data)
+            }).catch(err => {
+                console.log(err)
+            })
+    }, [])
+
     return (
-        <div>
+        <>
             <br />
-            <CardGroup>
-                <Container>
-                    <Row>
-                        <CustomCard dogImg={Dog01} name='Max' sex='M' age='1' />
-                        <CustomCard dogImg={Dog02} name='KOBE' sex='F' age='2' />
-                        <CustomCard dogImg={Dog03} name='OSCAR' sex='M' age='3' />
-                    </Row>
-                    <br />
-                    <Row>
-                        <CustomCard dogImg={Dog04} name='COOPER' sex='M' age='1' />
-                        <CustomCard dogImg={Dog05} name='OAKLEY' sex='F' age='2' />
-                        <CustomCard dogImg={Dog06} name='MAC' sex='M' age='3' />
-                    </Row>
-                    <br />
-                    <Row>
-                        <CustomCard dogImg={Dog07} name='CHARLIE' sex='M' age='1' />
-                        <CustomCard dogImg={Dog08} name='REX' sex='F' age='2' />
-                        <CustomCard dogImg={Dog09} name='RUDY' sex='M' age='3' />
-                    </Row>
-                </Container>
-            </CardGroup>
+            <div>
+                <Row xs={'auto'} md={'auto'} className="g-4 justify-content-md-center">
+                    {Array.from({ length: dogDataList.length }).map((_, index) => (
+                        <div key={index}>
+                            <CustomCard
+                                dogImg={dogDataList[index]?.image || Dog01}
+                                name={dogDataList[index]?.name || "N/A"}
+                                sex={dogDataList[index]?.sex || "N/A"}
+                                age={dogDataList[index]?.age || "N/A"}>
+                            </CustomCard>
+                        </div>
+                    ))}
+                </Row>
+            </div>
             <br /><br /><br /><br />
-        </div>
+        </>
     )
 }
