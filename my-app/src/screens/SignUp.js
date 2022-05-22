@@ -1,27 +1,23 @@
 import Axios from 'axios'
 import React, { useState } from 'react'
 // bootstrap components
-// import Card from 'react-bootstrap/Card';
-// import Form from 'react-bootstrap/Form';
-// import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 export default function SignUp() {
     const url = "http://localhost:5000/employee";
     const [data, setData] = useState({
         name: "",
-        age: "",
-        sex: "",
         email: "",
         password: "",
         sign_up_code: "",
     })
 
-    function submit(e){
+    function submit(e) {
         e.preventDefault();
-        Axios.post(url,{
+        Axios.post(url, {
             name: data.name,
-            age: data.age,
-            sex: data.sex,
             email: data.email,
             password: data.password,
             sign_up_code: data.sign_up_code
@@ -30,25 +26,50 @@ export default function SignUp() {
         })
     }
 
-    function handle(e){
-        const newdata={...data}
+    function handle(e) {
+        const newdata = { ...data }
         newdata[e.target.id] = e.target.value
         setData(newdata)
         console.log(newdata)
     }
 
+    const formStyle = {
+        margin: 'auto', 
+        width: '400px',
+        backgroundColor: "lightblue"
+    };
+
     return (
         <div>
             <br />
-            <form onSubmit={(e)=>submit(e)}>
-                <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder="name" type="text"></input><br /><br />
-                <input onChange={(e)=>handle(e)} id="age" value={data.age} placeholder="age" type="text"></input><br /><br />
-                <input onChange={(e)=>handle(e)} id="sex" value={data.sex} placeholder="sex" type="text"></input><br /><br />
-                <input onChange={(e)=>handle(e)} id="email" value={data.email} placeholder="email" type="email"></input><br /><br />
-                <input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder="password" type="password"></input><br /><br />
-                <input onChange={(e)=>handle(e)} id="sign_up_code" value={data.sign_up_code} placeholder="sign_up_code" type="text"></input><br /><br />
-                <button>Submit</button>
-            </form>
+            <Card style={formStyle}>
+                <Card.Body>
+                    <Form onSubmit={(e) => submit(e)}>
+                        <Form.Group className="mb-3" controlId="formBasicName">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control onChange={(e) => handle(e)} id="name" value={data.name} placeholder="Enter name" type="text" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control onChange={(e) => handle(e)} id="email" value={data.email} placeholder="Enter email" type="email" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control onChange={(e) => handle(e)} id="password" value={data.password} placeholder="Enter password" type="password" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicSignUpCode">
+                            <Form.Label>Sign up code</Form.Label>
+                            <Form.Control onChange={(e) => handle(e)} id="sign_up_code" value={data.sign_up_code} placeholder="Enter sign up code" type="text" />
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Submit
+                        </Button>
+                    </Form>
+                </Card.Body>
+            </Card>
         </div>
     )
 }
