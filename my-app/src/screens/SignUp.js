@@ -45,22 +45,22 @@ export default function SignUp() {
             <Card style={formStyle}>
                 <Card.Body>
                     <Form onSubmit={(e) => submit(e)}>
-                        <Form.Group className="mb-3" controlId="formBasicName">
+                        <Form.Group className="mb-3">
                             <Form.Label>Name</Form.Label>
                             <Form.Control onChange={(e) => handle(e)} id="name" value={data.name} placeholder="Enter name" type="text" />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-3">
                             <Form.Label>Email</Form.Label>
                             <Form.Control onChange={(e) => handle(e)} id="email" value={data.email} placeholder="Enter email" type="email" />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3">
                             <Form.Label>Password</Form.Label>
                             <Form.Control onChange={(e) => handle(e)} id="password" value={data.password} placeholder="Enter password" type="password" />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicSignUpCode">
+                        <Form.Group className="mb-3">
                             <Form.Label>Sign up code</Form.Label>
                             <Form.Control onChange={(e) => handle(e)} id="sign_up_code" value={data.sign_up_code} placeholder="Enter sign up code" type="text" />
                         </Form.Group>
