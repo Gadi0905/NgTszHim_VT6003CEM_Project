@@ -5,22 +5,29 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-export default function SignUp() {
+export default function UpdateDog() {
+    const token = 'Bearer ' + localStorage.getItem('accessToken')
+    const header = {
+        'Authorization': token
+    }
     const [data, setData] = useState({
+        id: "",
         name: "",
-        email: "",
-        password: "",
-        sign_up_code: "",
+        age: "",
+        sex: "",
     })
-    const url = "http://localhost:5000/employee";
+    const url = "http://localhost:5000/dog";
 
     function submit(e) {
         e.preventDefault();
-        Axios.post(url, {
+        Axios.put(url, {
+            headers: header,
+            id: data.id,
             name: data.name,
-            email: data.email,
-            password: data.password,
-            sign_up_code: data.sign_up_code
+            age: data.age,
+            sex: data.sex,
+        }, {
+            headers: header
         }).then(res => {
             console.log(res.data)
         })
@@ -34,7 +41,7 @@ export default function SignUp() {
     }
 
     const formStyle = {
-        margin: 'auto', 
+        margin: 'auto',
         width: '400px',
         backgroundColor: "lightblue"
     };
@@ -46,23 +53,22 @@ export default function SignUp() {
                 <Card.Body>
                     <Form onSubmit={(e) => submit(e)}>
                         <Form.Group className="mb-3">
+                            <Form.Label>ID</Form.Label>
+                            <Form.Control onChange={(e) => handle(e)} id="id" value={data.id} placeholder="Enter id" type="text"/>
+                        </Form.Group>
+                        <Form.Group className="mb-3">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control onChange={(e) => handle(e)} id="name" value={data.name} placeholder="Enter name" type="text" />
+                            <Form.Control onChange={(e) => handle(e)} id="name" value={data.name} placeholder="Enter name" type="text"/>
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control onChange={(e) => handle(e)} id="email" value={data.email} placeholder="Enter email" type="email" />
+                            <Form.Label>Age</Form.Label>
+                            <Form.Control onChange={(e) => handle(e)} id="age" value={data.age} placeholder="Enter age" type="text" />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control onChange={(e) => handle(e)} id="password" value={data.password} placeholder="Enter password" type="password" />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3">
-                            <Form.Label>Sign up code</Form.Label>
-                            <Form.Control onChange={(e) => handle(e)} id="sign_up_code" value={data.sign_up_code} placeholder="Enter sign up code" type="text" />
+                            <Form.Label>Sex</Form.Label>
+                            <Form.Control onChange={(e) => handle(e)} id="sex" value={data.sex} placeholder="Enter sex" type="text" />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Submit

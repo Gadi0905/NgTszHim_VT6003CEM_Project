@@ -6,11 +6,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 export default function SignIn() {
-  const url = "http://localhost:5000/login";
   const [data, setData] = useState({
     email: "",
     password: "",
   })
+  const url = "http://localhost:5000/login";
 
   function submit(e) {
     e.preventDefault();

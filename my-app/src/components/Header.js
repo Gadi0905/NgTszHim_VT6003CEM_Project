@@ -9,6 +9,9 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import SignIn from '../screens/SignIn';
 import Home from '../screens/Home';
 import SignUp from '../screens/SignUp';
+import AddDog from '../screens/AddDog';
+import DeleteDog from '../screens/DeleteDog';
+import UpdateDog from '../screens/UpdateDog';
 
 export default function Header() {
     return (
@@ -22,6 +25,9 @@ export default function Header() {
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav className="me-auto"></Nav>
                                 <Nav>
+                                    <Nav.Link as={Link} to="/AddDog">Add Dog</Nav.Link>
+                                    <Nav.Link as={Link} to="/DeleteDog">Delete Dog</Nav.Link>
+                                    <Nav.Link as={Link} to="/UpdateDog">Update Dog</Nav.Link>
                                     <Nav.Link as={Link} to="/SignIn">SIGN IN</Nav.Link>
                                     <Nav.Link as={Link} to="/SignUp">SIGN UP</Nav.Link>
                                 </Nav>
@@ -34,6 +40,9 @@ export default function Header() {
                         <Route path='/' element={<Home />}></Route>
                         <Route path='/SignIn' element={<SignIn />}></Route>
                         <Route path='/SignUp' element={<SignUp />}></Route>
+                        <Route path='/AddDog' element={<AddDog />}></Route>
+                        <Route path='/DeleteDog' element={<DeleteDog />}></Route>
+                        <Route path='/UpdateDog' element={<UpdateDog />}></Route>
                     </Routes>
                 </div>
             </div>

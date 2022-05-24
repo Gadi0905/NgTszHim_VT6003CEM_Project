@@ -22,17 +22,15 @@ import Dog01 from '../img/dog01.jpg';
 import axios from 'axios';
 
 export default function Home() {
-    const token = 'Bearer ' + localStorage.getItem('accessToken')
-    const header = {
-        'Authorization': token
-    }
+    // const token = 'Bearer ' + localStorage.getItem('accessToken')
+    // const header = {
+    //     'Authorization': token
+    // }
 
     const [dogDataList, setDogDataList] = useState({})
 
     useEffect(() => {
-        axios.get('http://localhost:5000/dog', { 
-            headers: header 
-        }).then(res => {
+        axios.get('http://localhost:5000/dog').then(res => {
             setDogDataList(res.data)
         }).catch(err => {
             console.log(err)
