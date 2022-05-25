@@ -2,36 +2,32 @@
 import Axios from 'axios'
 // react
 import React, { useState } from 'react'
+// my components
+import CustomCard from '../components/custom_card.js';
 // bootstrap components
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-// Add Dog function
-export default function AddDog() {
-    // accessToken
-    const token = 'Bearer ' + localStorage.getItem('accessToken')
-    // header
-    const header = {
-        'Authorization': token
-    }
+import Row from 'react-bootstrap/Row';
+// image
+import Dog01 from '../img/dog01.jpg';
+// Search Dog function
+export default function SearchDog() {
+    // var
+    const [dogDataList, setDogDataList] = useState({})
     // data model
     const [data, setData] = useState({
         name: "",
-        age: "",
-        sex: "",
     })
     // url
-    const url = "http://localhost:5000/dog";
+    const url = "http://localhost:5000/dog/" + data.name;
     // onSubmit
     function submit(e) {
         e.preventDefault();
-        Axios.post(url, {
-            name: data.name,
-            age: data.age,
-            sex: data.sex,
-        }, {
-            headers: header
+        Axios.get(url, {
+            name: data.name
         }).then(res => {
+            setDogDataList(res.data)
             console.log(res.data)
         })
     }
@@ -57,24 +53,28 @@ export default function AddDog() {
                     <Form onSubmit={(e) => submit(e)}>
                         <Form.Group className="mb-3">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control onChange={(e) => handle(e)} id="name" value={data.name} placeholder="Enter name" type="text"/>
+                            <Form.Control onChange={(e) => handle(e)} id="name" value={data.name} placeholder="Enter name" type="text" />
                         </Form.Group>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>Age</Form.Label>
-                            <Form.Control onChange={(e) => handle(e)} id="age" value={data.age} placeholder="Enter age" type="text"/>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3">
-                            <Form.Label>Sex</Form.Label>
-                            <Form.Control onChange={(e) => handle(e)} id="sex" value={data.sex} placeholder="Enter sex" type="text"/>
-                        </Form.Group>
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
                     </Form>
                 </Card.Body>
             </Card>
+            <br />
+            <Row xs={'auto'} md={'auto'} className="g-4 justify-content-md-center">
+                {Array.from({ length: dogDataList.length }).map((_, index) => (
+                    <div key={index}>
+                        <CustomCard
+                            dogImg={dogDataList[index]?.image || Dog01}
+                            name={dogDataList[index]?.name || "N/A"}
+                            sex={dogDataList[index]?.sex || "N/A"}
+                            age={dogDataList[index]?.age || "N/A"}>
+                        </CustomCard>
+                    </div>
+                ))}
+            </Row>
         </div>
     )
 }

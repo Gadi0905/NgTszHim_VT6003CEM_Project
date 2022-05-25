@@ -1,10 +1,11 @@
+// react
 import React from 'react'
 // bootstrap components
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 // icon
 import { AiFillFacebook, AiFillInstagram, AiFillTwitterSquare } from 'react-icons/ai';
-
+// My Footer
 export default function Footer() {
     return (
         <div>

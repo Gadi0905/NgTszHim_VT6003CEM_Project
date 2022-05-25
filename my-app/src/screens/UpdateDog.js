@@ -1,23 +1,29 @@
+// axios
 import Axios from 'axios'
+// react
 import React, { useState } from 'react'
 // bootstrap components
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+// Update Dog function
 export default function UpdateDog() {
+    // token
     const token = 'Bearer ' + localStorage.getItem('accessToken')
+    // header
     const header = {
         'Authorization': token
     }
+    // data model
     const [data, setData] = useState({
         id: "",
         name: "",
         age: "",
         sex: "",
     })
+    // url
     const url = "http://localhost:5000/dog";
-
+    // onSubmit
     function submit(e) {
         e.preventDefault();
         Axios.put(url, {
@@ -32,14 +38,14 @@ export default function UpdateDog() {
             console.log(res.data)
         })
     }
-
+    // onHandle
     function handle(e) {
         const newdata = { ...data }
         newdata[e.target.id] = e.target.value
         setData(newdata)
         console.log(newdata)
     }
-
+    // form style
     const formStyle = {
         margin: 'auto',
         width: '400px',

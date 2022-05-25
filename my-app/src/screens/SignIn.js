@@ -1,17 +1,21 @@
+// axios
 import Axios from 'axios'
+//react
 import React, { useState } from 'react'
 // bootstrap components
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+// Sign In function
 export default function SignIn() {
+  // data model
   const [data, setData] = useState({
     email: "",
     password: "",
   })
+  // url
   const url = "http://localhost:5000/login";
-
+  // onSubmit
   function submit(e) {
     e.preventDefault();
     Axios.post(url, {
@@ -22,14 +26,14 @@ export default function SignIn() {
       localStorage.setItem("accessToken", res.data.accessToken)
     })
   }
-
+  // onHandle
   function handle(e) {
     const newdata = { ...data }
     newdata[e.target.id] = e.target.value
     setData(newdata)
     console.log(newdata)
   }
-
+  // form style
   const formStyle = {
     margin: 'auto',
     width: '400px',

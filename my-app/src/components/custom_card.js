@@ -1,3 +1,4 @@
+// react
 import React from 'react'
 // bootstrap components
 import Card from 'react-bootstrap/Card';
@@ -5,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // image
 import Paw from '../img/paw.png';
-
+// My Custom Card
 export default function CustomCard({ dogImg, name, sex, age }) {
     return (
         <Col>

@@ -1,19 +1,23 @@
+// axios
 import Axios from 'axios'
+// react
 import React, { useState } from 'react'
 // bootstrap components
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+// SignUp function
 export default function SignUp() {
+    // data model
     const [data, setData] = useState({
         name: "",
         email: "",
         password: "",
         sign_up_code: "",
     })
+    // url
     const url = "http://localhost:5000/employee";
-
+    // onSubmit
     function submit(e) {
         e.preventDefault();
         Axios.post(url, {
@@ -25,14 +29,14 @@ export default function SignUp() {
             console.log(res.data)
         })
     }
-
+    // onHandle
     function handle(e) {
         const newdata = { ...data }
         newdata[e.target.id] = e.target.value
         setData(newdata)
         console.log(newdata)
     }
-
+    // form style
     const formStyle = {
         margin: 'auto', 
         width: '400px',

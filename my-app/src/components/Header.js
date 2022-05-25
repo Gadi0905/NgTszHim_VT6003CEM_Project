@@ -1,3 +1,4 @@
+// react
 import React from 'react'
 // bootstrap components
 import Navbar from 'react-bootstrap/Navbar';
@@ -12,7 +13,8 @@ import SignUp from '../screens/SignUp';
 import AddDog from '../screens/AddDog';
 import DeleteDog from '../screens/DeleteDog';
 import UpdateDog from '../screens/UpdateDog';
-
+import SearchDog from '../screens/SearchDog';
+// My Header
 export default function Header() {
     return (
         <BrowserRouter>
@@ -25,6 +27,7 @@ export default function Header() {
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav className="me-auto"></Nav>
                                 <Nav>
+                                    <Nav.Link as={Link} to="/SearchDog">Search Dog</Nav.Link>
                                     <Nav.Link as={Link} to="/AddDog">Add Dog</Nav.Link>
                                     <Nav.Link as={Link} to="/DeleteDog">Delete Dog</Nav.Link>
                                     <Nav.Link as={Link} to="/UpdateDog">Update Dog</Nav.Link>
@@ -43,6 +46,7 @@ export default function Header() {
                         <Route path='/AddDog' element={<AddDog />}></Route>
                         <Route path='/DeleteDog' element={<DeleteDog />}></Route>
                         <Route path='/UpdateDog' element={<UpdateDog />}></Route>
+                        <Route path='/SearchDog' element={<SearchDog />}></Route>
                     </Routes>
                 </div>
             </div>
