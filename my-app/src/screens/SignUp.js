@@ -6,7 +6,16 @@ import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-// SignUp function
+/**
+ * Component for Sign Up.
+ *
+ * @component
+ * @example
+ * 
+ * return (
+ *     <SignUp />
+ * )
+ */
 export default function SignUp() {
     // data model
     const [data, setData] = useState({

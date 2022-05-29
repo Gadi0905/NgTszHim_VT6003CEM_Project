@@ -5,7 +5,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 // icon
 import { AiFillFacebook, AiFillInstagram, AiFillTwitterSquare } from 'react-icons/ai';
-// My Footer
+/**
+ * Component for show Footer.
+ *
+ * @component
+ * @example
+ * 
+ * return (
+ *     <Footer />
+ * )
+ */
 export default function Footer() {
     return (
         <div>

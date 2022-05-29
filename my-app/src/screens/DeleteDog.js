@@ -6,7 +6,16 @@ import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-// Delete Dog function
+/**
+ * Component for Delete Dog.
+ *
+ * @component
+ * @example
+ * 
+ * return (
+ *     <DeleteDog />
+ * )
+ */
 export default function DeleteDog() {
     // accessToken
     const token = 'Bearer ' + localStorage.getItem('accessToken')

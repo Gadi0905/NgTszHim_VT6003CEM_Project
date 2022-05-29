@@ -6,7 +6,22 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // image
 import Paw from '../img/paw.png';
-// My Custom Card
+/**
+ * Component for show dogImg, name, sex, age.
+ *
+ * @component
+ * @example
+ * 
+ * const dogImg = ""
+ * const age = 21
+ * const name = 'Jitendra Nirnejak'
+ * const sex = "M"
+ * 
+ * return (
+ *   <CustomCard dogImg={dogImg} name={name} sex={sex} age={age} />
+ * )
+ * 
+ */
 export default function CustomCard({ dogImg, name, sex, age }) {
     return (
         <Col>

@@ -14,7 +14,16 @@ import AddDog from '../screens/AddDog';
 import DeleteDog from '../screens/DeleteDog';
 import UpdateDog from '../screens/UpdateDog';
 import SearchDog from '../screens/SearchDog';
-// My Header
+/**
+ * Component for show Header.
+ *
+ * @component
+ * @example
+ * 
+ * return (
+ *     <Header />
+ * )
+ */
 export default function Header() {
     return (
         <BrowserRouter>

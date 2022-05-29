@@ -9,7 +9,16 @@ import Button from 'react-bootstrap/Button';
 import Dog01 from '../img/dog01.jpg';
 // axios
 import axios from 'axios';
-// home screen
+/**
+ * Component for show home screen.
+ *
+ * @component
+ * @example
+ * 
+ * return (
+ *     <Home />
+ * )
+ */
 export default function Home() {
     // var
     const [show, setShow] = useState(true)

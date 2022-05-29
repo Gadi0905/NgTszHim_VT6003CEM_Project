@@ -6,7 +6,16 @@ import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-// Update Dog function
+/**
+ * Component for Update Dog.
+ *
+ * @component
+ * @example
+ * 
+ * return (
+ *     <UpdateDog />
+ * )
+ */
 export default function UpdateDog() {
     // token
     const token = 'Bearer ' + localStorage.getItem('accessToken')

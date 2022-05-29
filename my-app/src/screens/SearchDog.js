@@ -11,7 +11,16 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 // image
 import Dog01 from '../img/dog01.jpg';
-// Search Dog function
+/**
+ * Component for Search Dog.
+ *
+ * @component
+ * @example
+ * 
+ * return (
+ *     <SearchDog />
+ * )
+ */
 export default function SearchDog() {
     // var
     const [dogDataList, setDogDataList] = useState({})
